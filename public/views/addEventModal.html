@@ -1,0 +1,38 @@
+<div class="modal-header">
+	<h4 class="modal-title">Add Sub Admin</h4>
+</div>
+<div class="modal-body" ng-form name='myForm'>
+	<h5 class="pull-right"><strong> Timezone : {{timezone}}</strong></h5>
+<!-- 	<div class="form-group" ng-if="errCheck" ng-repeat='err in Errors'>
+		<p class='bg-danger'>{{err.text}}</p>
+	</div> -->
+	<flash-message duration="3000" show-close="true" on-dismiss="myCallback(flash)" ></flash-message>
+	<div class="form-group">
+		<label class="col-sm-4" for="email">Username</label>
+		<input type="text" name='owner_name' class="form-control" ng-model='Event.owner_name' placeholder='Username' required>
+	</div>
+	<div class="form-group">
+		<label class="control-label">Email</label>
+		<input type="text" name='owner_email' class="form-control" ng-model='Event.owner_email' placeholder='Email' required>
+	</div>
+	<div class="form-group">
+		<label class="control-label">Password</label>
+		<input placeholder='Password' type="password" class="form-control" name='owner_password' ng-model='Event.owner_password' required>
+	</div>
+	<div class="form-group">
+		<label class="control-label">Organization Name</label>
+		<input placeholder='Organization Name' type="text" class="form-control" name='organization_name' ng-model='Event.organization_name' required>
+	</div>	
+	<div class="form-group">
+	    <label class="control-label">Category Type</label>
+	    <select class="form-control" ng-model="Event.type">
+	      <option value="">Select Category</option>
+	      <option value="admin">Admin</option>
+	      <option value="sAdmin">Sub Admin</option>
+	    </select>
+	</div>  
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click='cancel()'>Close</button>
+	<button type="submit" class="btn btn-primary" ng-click='ok(myForm)'>Save changes</button>
+</div>
