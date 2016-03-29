@@ -29,4 +29,55 @@ app.controller('userController', ['$scope', '$location' , '$http', 'userService'
         })
     };
 
+
+    $scope.getUsersList = function(){
+
+        userService.getUsersList()
+        .then(function (response){
+            console.log(response);
+            //$location.path('/app/dashboard');
+            console.log(response.data);
+            if(response.data.length == 0){
+                $scope.response = true;
+            }else{
+                $scope.users = response.data;
+            }
+        })
+        .catch(function (err){
+            if(err.status == 500){
+                $scope.serverError = true;              
+            }
+        })
+    }
+
+    $scope.delete = function(userId){
+
+        userService.deleteUser(userId)
+        .then(function (response){
+            userService.getUsersList()
+            .then(function (response){
+                console.log(response);
+                //$location.path('/app/dashboard');
+                console.log(response.data);
+                if(response.data.length == 0){
+                    $scope.response = true;
+                }else{
+                    $scope.users = response.data;
+                }
+            })
+            .catch(function (err){
+                if(err.status == 500){
+                    $scope.serverError = true;              
+                }
+            })
+        })
+        .catch(function (err){
+            if(err.status == 500){
+                $scope.serverError = true;              
+            }
+        })
+
+    }    
+
+
 }]);

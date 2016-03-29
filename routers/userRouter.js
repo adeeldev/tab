@@ -43,6 +43,19 @@ router.post('/login', function (request, response){
 		}
 });
 
+
+router.get('/list', function (request, response){ 
+ 
+		userModel.find({},function (err, user){	
+			if(err){
+					response.status(400).send({"message" : err}).end();
+			}
+			console.log(user);
+			return response.status(200).send(user).end();
+		})
+});
+
+
 router.post('/login/social', function (request, response){ 
 		var data = {
 			"email" : request.body.email,
@@ -278,6 +291,8 @@ router.post('/verify',function (request,response){
 	});	
 });
 router.post('/removeUser', function (request,response){
+
+	console.log(request.body);
 	var _id = request.body.user_id;
 	if(_id == null || ""){
 		response.status(400).send({"message": "Parameter Missing"}).end();

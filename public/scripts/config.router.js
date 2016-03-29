@@ -65,6 +65,13 @@ angular.module('app')
               controller : 'advertiserController',
               resolve: load(['scripts/controllers/frontend/advertiserController.js']) 
             })            
+            .state('app.users', {
+              url: '/users',
+              templateUrl: 'views/pages/users.html',
+              data : { title: 'Users', folded: true },
+              controller : 'userController',
+              resolve: load(['scripts/controllers/frontend/userController.js']) 
+            })              
             .state('app.wall', {
               url: '/wall',
               templateUrl: 'views/pages/dashboard.wall.html',

@@ -1,0 +1,44 @@
+  <div class="row" data-ng-init="getUsersList()">
+  </div>
+  <br><br>
+
+  <div class="panel panel-card">
+    <div class="panel-heading">Basic</div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Username</th>
+          <th>Pending Earning</th>
+          <th>User Points</th>
+          <th>Referal Earned</th>
+          <th>Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  ng-repeat="user in users">  
+          <td>{{user.email}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.userPoints}}</td>
+          <td>0 $</td>
+          <td>0 $</td>
+          <td><input type="button" value="Delete" ng-click="delete(user._id)"></td>
+        </tr>
+      </tbody>
+    </table>    
+  </div>
+  <style type="text/css">
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+  border-right:0; 
+  box-shadow:0 0 0; 
+  border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}</style>
