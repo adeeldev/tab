@@ -3,7 +3,7 @@ app.controller('userController', ['$scope', '$http', 'userService', function($sc
     console.log('in user controller');
 
     $scope.signup = function(user){  
-    	console.log(user);
+    	// console.log(user);
     	var userData = {
     		username : user.username,
     		email 	 : user.email,	
@@ -12,10 +12,12 @@ app.controller('userController', ['$scope', '$http', 'userService', function($sc
     	}
         userService.register(userData)
         .then(function (response){
+            $location.path('/app/dashboard');
             console.log(response.data);
             if(response.data.length == 0){
                 $scope.response = true;
             }else{
+                $location.path('/app/dashboard'); 
                 $scope.getPromotions();
                 $scope.promotionResult = promotionResult.data;
             }

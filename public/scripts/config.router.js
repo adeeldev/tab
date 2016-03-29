@@ -20,7 +20,7 @@ angular.module('app')
     [          '$stateProvider', '$urlRouterProvider', 'MODULE_CONFIG',
       function ( $stateProvider,   $urlRouterProvider,  MODULE_CONFIG ) {
         $urlRouterProvider
-          .otherwise('/access/signup');
+          .otherwise('/app/dashboard');
             $stateProvider
               .state('app', {
                 abstract: true,
