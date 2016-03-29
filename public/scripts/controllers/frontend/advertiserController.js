@@ -58,8 +58,9 @@ app.controller('advertiserController', ['$scope', '$location', '$http', 'adminSe
             if(response.data.length == 0){
                 $scope.response = true;
             }else{
-                $scope.getPromotions();
-                $scope.promotionResult = promotionResult.data;
+                $location.path('/app/analysis'); 
+                // $scope.getPromotions();
+                // $scope.promotionResult = promotionResult.data;
             }
         })
         .catch(function (err){
