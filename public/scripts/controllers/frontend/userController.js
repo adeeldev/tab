@@ -1,25 +1,25 @@
-app.controller('userController', ['$scope', '$http', 'userService', function($scope, $http, userService) {
+app.controller('userController', ['$scope', '$location' , '$http', 'userService', function($scope, $location, $http, userService) {
 
     console.log('in user controller');
 
     $scope.signup = function(user){  
     	// console.log(user);
     	var userData = {
-    		username : user.username,
+    		username : user.name,
     		email 	 : user.email,	
     		password : user.password
 
     	}
         userService.register(userData)
         .then(function (response){
-            $location.path('/app/dashboard');
+            console.log(response);
+            //$location.path('/app/dashboard');
             console.log(response.data);
             if(response.data.length == 0){
                 $scope.response = true;
             }else{
+                console.log(response);
                 $location.path('/app/dashboard'); 
-                $scope.getPromotions();
-                $scope.promotionResult = promotionResult.data;
             }
         })
         .catch(function (err){

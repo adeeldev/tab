@@ -79,11 +79,12 @@ router.post('/register', function (request,response){
 		email : request.body.email,
 		provider : 'local'
 	}
+	console.log(data);
 	if((data.username == null || "") && (data.password == null || "") && (data.email == null || "")){
 		response.status(400).send({"message" : "Parameters are missing."}).end();
 	}else{
 		//SARUH23500001
-		userModel.findOne({ $and:[ {'email':data.email} ]},function (err, user){	
+		userModel.findOne({'email':data.email},function (err, user){	
 			if(err){
 					response.status(400).send({"message" : err}).end();
 			}
