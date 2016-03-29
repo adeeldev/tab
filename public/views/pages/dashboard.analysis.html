@@ -1,0 +1,61 @@
+  <div class="row" data-ng-init="getAdvertisers()">
+    <div class="col-sm-3 pull-left">
+      <a data-ng-href="/#/app/advertiser"><button class="btn btn-fw btn-primary waves-effect waves-effect" md-ink-ripple="" >Add Advertisers</button>
+      </a>       
+    </div>
+
+    <div class="col-sm-4 pull-right col-sm-offset-3">
+            <div class="input-group stylish-input-group">
+                <input type="text" class="form-control"  placeholder="Search" >
+                <span class="input-group-addon">
+                    <button type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>  
+                </span>
+            </div>
+    </div>
+  </div>
+  <br><br>
+
+  <div class="panel panel-card">
+    <div class="panel-heading">Basic</div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Advertiser</th>
+          <th>Email</th>
+          <th>Balance</th>
+          <th>Active Compaigns</th>
+          <th>Total Spending</th>
+          <th>Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="adv in advertisers">
+          <td>{{adv._id}}</td>
+          <td>{{adv.username}}</td>
+          <td>{{adv.email}}</td>
+          <td>100.0 $</td>
+          <td> ---- </td>
+          <td> 30.5 $</td>
+          <td><a href="/#/app/editAdvertiser/{{adv._id}}"><input type="button" value="Edit"></a></td>
+        </tr>
+      </tbody>
+    </table>    
+  </div>
+  <style type="text/css">
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+  border-right:0; 
+  box-shadow:0 0 0; 
+  border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}</style>

@@ -77,18 +77,18 @@ router.post('/register', function (request,response){
 		username : request.body.username,
 		password : request.body.password,
 		email : request.body.email,
-		provider : request.body.provider
+		provider : 'local'
 	}
-	if((data.username == null || "") && (data.password == null || "") && (data.email == null || "") && (data.provider == null || "")){
+	if((data.username == null || "") && (data.password == null || "") && (data.email == null || "")){
 		response.status(400).send({"message" : "Parameters are missing."}).end();
 	}else{
 		//SARUH23500001
-		userModel.findOne({ $and:[ {'email':data.email}, {'provider': data.provider} ]},function (err, user){	
+		userModel.findOne({ $and:[ {'email':data.email} ]},function (err, user){	
 			if(err){
 					response.status(400).send({"message" : err}).end();
 			}
 			if(user){
-					return response.status(400).send({'status':'404' ,'message' : 'email and provider already exists'}).end();
+					return response.status(400).send({'status':'404' ,'message' : 'email already exists'}).end();
 			}	
 			userModel.register(data)
 			.then(function (result){

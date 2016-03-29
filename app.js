@@ -7,6 +7,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	mongoose = require('mongoose'),
 	userRouter = require('./routers/userRouter'),
+	adminRouter = require('./routers/adminRouter'),
 	path = require('path');
 
 var config = require('./config');
@@ -66,6 +67,7 @@ if (config.environment === 'development') {
 }
 //app.use('/event',eventRouter);
 app.use('/users', userRouter);
+app.use('/admin', adminRouter);
 
 
 //====================================================================================
